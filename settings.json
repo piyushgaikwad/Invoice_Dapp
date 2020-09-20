@@ -1,0 +1,20 @@
+{
+    "public": {
+        "geth": {
+            "address": "http://localhost:8545"
+        },
+        "contracts": {
+            "CaleroMain": {
+                "address": "0x121cEafFf66e45e3bE1f2D746fb3b13fBe7d4025"
+            },
+            "ReceivableCompany": {
+                "address": "0xc33ff2aa79cfa23cef641628a41687f76ef1f1be",
+                "owner": "0x9C16c04bDA8904EC30a0D7045b276a3c66012Fd3"
+            },
+            "PayableCompany": {
+                "address": "0x697e7cc384b039332a73d624bb8238a66bdf54aa",
+                "owner": "0xD5B93C49c4201DB2A674A7d0FC5f3F733EBaDe80"
+            }
+        }
+    }
+}

@@ -1,0 +1,292 @@
+<head>
+    <title>Calero Invoice</title>
+    <style>
+        body {
+            background-color: #f3f2f2;
+            font: 300 16px Helvetica, Arial, 'sans-serif';
+        }
+
+        #wrapper {
+            width: 1020px;
+            margin: 30px auto 0;
+            border: 1px solid #c5c5c5;
+            min-height: calc(100vh - 20px);
+            background-color: white;
+            box-shadow: 0px 2px 5px 0px #9c9595;
+        }
+
+        .spinner-container,
+        header .account-head .account-head-left h2,
+        header .account-head .account-head-left a.copy,
+        nav .logo,
+        nav .tabbed .tab:first-child,
+        header .account-head .account-head-left p:last-child,
+        header .account-head .account-head-right,
+        header .view-options div,
+        nav .tabbed .tab .tab-item:before,
+        nav .tabbed .tab .tab-head,
+        footer,
+        section .invoices-block .invoice-content .iconed:before,
+        section .invoices-block .invoice-content.normal:before,
+        section .invoices-block .invoice-content.warning:before,
+        .dapp-modal-buttons a.cancel,
+        form.add-invoice h3,
+        section .invoices-block .invoice-content.success:before
+        {
+            display: none !important;
+        }
+
+        a:active, a:visited:active, button:active {
+            transform: scale(1) !important;
+        }
+
+        nav {
+            background-color: white;
+            width: 100%;
+            height: initial;
+            position: inherit;
+        }
+
+        nav .tabbed .tab .tab-item {
+            display: inline-block;
+        }
+
+        nav .tabbed .tab {
+            margin: 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+
+        nav .tabbed .tab .tab-item {
+            background: rgb(222, 218, 218);
+            color: rgba(93, 91, 91, 0.79);
+            font-size: 18px;
+            margin: 0;
+            border: none;
+            text-transform: capitalize;
+            width: 50%;
+        }
+
+        nav .tabbed .tab .tab-item.active {
+            background-color: white;
+            color: black;
+            cursor: initial;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: calc(100% - 60px);
+            left: 0;
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            margin: 0 30px;
+            box-sizing: border-box;
+        }
+
+        header .account-head {
+            height: initial;
+            padding-left: 0;
+        }
+
+        header .account-head .account-head-left {
+            text-align: center;
+            float: none;
+        }
+
+        header .view-options {
+            padding-right: 0;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .blue-button.inverted {
+            background: rgb(51, 179, 53);
+            border: 1px solid rgb(87, 146, 84);
+            color: #fff;
+            border-radius: 0;
+            padding: 10px;
+            font-size: 16px;
+            float: none;
+        }
+
+        header .view-options,
+        header .account-head {
+            background-color: transparent
+        }
+
+        header .account-head .account-head-left {
+            text-align: left
+        }
+
+        header .account-head .account-head-left {
+            display: flex;
+            align-items: center;
+        }
+
+        header .account-head .account-head-left p {
+            color: #403939;
+            font-size: 16px;
+            margin: 0 0 0 15px;
+            font-weight: 700;
+        }
+
+        #wrapper > section {
+            top: 0;
+            width: 100%;
+            left: 0;
+            background-color: white
+        }
+
+        section .invoices-block .invoice-content {
+            width: calc(50% - 3px);
+            display: inline-block;
+            border-radius: 0;
+            border-color: #ccc;
+            box-sizing: border-box;
+            float: inherit;
+            margin-bottom: 0;
+        }
+
+        section .invoices-block .invoice-content.six-cells .cell {
+            float: none;
+            width: 100%;
+        }
+
+        section .invoices-block .invoice-content .iconed {
+            padding: 0;
+            color: black;
+            font-weight: 100;
+            font-size: 16px;
+        }
+
+        section .invoices-block .invoice-content span {
+            color: #313131;
+            font-weight: 700;
+            float: right;
+            max-width: 50%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        section .invoices-block .invoice-content span.currency {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-left: 5px;
+            font-weight: 100;
+        }
+
+        section .invoices-block .invoice-content .cell.status {
+            text-align: inherit;
+            border-top: 1px solid;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section .invoices-block .invoice-content .cell.status p {
+            font-weight: 100;
+            font-size: 16px;
+            color: black;
+            text-transform: capitalize;
+        }
+
+        section .invoices-block .invoice-content .cell.status span {
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: capitalize;
+            margin: 10px 0;
+            padding: 0;
+            color: black;
+            text-align: right;
+        }
+
+        section .invoices-block .invoice-head {
+            font-size: 16px;
+            color: #2d373a;
+            font-weight: 700;
+            text-transform: capitalize;
+            margin-bottom: 6px;
+        }
+
+        form.add-invoice input:not(.token-address),
+        form.add-invoice select
+        {
+            background-color: transparent;
+            border: 1px solid #4e4b4b;
+            height: 40px !important;
+            color: black;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        form.add-invoice .col.col-8 {
+            padding: 0 10px;
+        }
+
+        form.add-invoice .col.col-8 input {
+            width: 100%
+        }
+
+        form.add-invoice input.token-address {
+            background: transparent;
+            border-bottom: 1px solid #4e4b4b;
+        }
+
+        form.add-invoice .row:last-child {
+            float: right !important;
+        }
+
+        .dapp-modal-overlay {
+            background-color: black
+        }
+
+        .dapp-modal-overlay .dapp-modal-container {
+            background: #ffffff;
+            transition: 0s !important;
+            transform: translate(-50%, -50%) !important;
+            width: 80%;
+            max-width: 980px;
+            left: 50%;
+            top: 50%;
+            margin: 0 auto;
+            position: absolute;
+        }
+
+        .dapp-modal-overlay .dapp-modal-container > h1 {
+            margin-bottom: 5px;
+        }
+
+        .dapp-modal-overlay .dapp-address-input {
+            position: relative;
+            width: 440px;
+            margin: 0 auto;
+        }
+
+        .dapp-modal-overlay .ok.dapp-primary-button {
+            background: rgb(51, 179, 53);
+            border: 1px solid rgb(87, 146, 84);
+            color: #fff;
+            border-radius: 0;
+            padding: 0 50px;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        form.add-invoice .row:nth-last-child(2) > .col > h3 {
+            display: block !important;
+        }
+
+        section .invoices-block .invoice-content.success {
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+
+<body></body>

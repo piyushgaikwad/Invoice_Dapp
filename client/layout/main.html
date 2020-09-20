@@ -1,0 +1,21 @@
+<template name="layout_main">
+    <div id="wrapper">
+        <nav>
+          <a href="#" class="logo" title="Calero"></a>
+          <div class="tabbed">
+            <div class="tab">
+              <div class="tab-head">company</div>
+              <a href="/receivable" class="tab-item receivable {{isActive 'receivable'}}">Seller</a>
+              <a href="/payable" class="tab-item payable {{isActive 'payable'}}">Costumer</a>
+            </div>
+          </div>
+        </nav>
+
+
+        {{> yield}}
+
+        <footer>
+        </footer>
+      </div>
+      {{> dapp_modalPlaceholder}}
+</template>

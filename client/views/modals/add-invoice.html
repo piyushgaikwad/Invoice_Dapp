@@ -1,0 +1,56 @@
+<template name="views_modals_add_invoice">
+    <h1>Add invoice</h1>
+    <form class="add-invoice">
+            <div class="row" style="float:left">
+                <div class="col col-4">
+                    <h3>Invoice ID</h3>
+                    <input type="string" name="invoice_id" placeholder="Invoice ID">
+
+                    <h3>Due date</h3>
+                    <input type="string" name="due_date" placeholder="MM-DD-YYYY">
+
+                </div>
+                <div class="col col-4">
+                    <h3>Item</h3>
+                    <input type="string" name="itemName" placeholder="Item">
+
+                    <h3>Quantity</h3>
+                    <input type="string" name="quantity" placeholder="Quantity">
+                </div>
+                <div class="col col-4">
+                    <h3>Price per unit</h3>
+                    <input type="string" name="pricePerUnit" placeholder="Price per unit">
+
+                    <h3>Amount</h3>
+                    <input type="string" name="amount" placeholder="Amount">
+                </div>
+                <div class="col col-4">
+                    <h3>Currency</h3>
+                    <select style="height: 32px" name="currency">
+                        <option value="EUR">EUR</option>
+                        <option value="ETH">ETH</option>
+                        <option value="BTC">BTC</option>
+                    </select>
+                </div>
+                <div class="col col-8">
+                    <h3>Message</h3>
+                    <input type="string" name="messageToRecipient" placeholder="Your message">
+                </div>
+            </div>
+
+
+            <div class="row" style="">
+                <div class="col col-12">
+                    <h3>Customer</h3>
+                    {{> dapp_addressInput placeholder="0x000000.." value="0x697e7cc384b039332a73d624bb8238a66bdf54aa" name="customer" autofocus=true class='token-address'}}
+                </div>
+            </div>
+
+            <div class="row" style="float:left">
+                <div class="dapp-modal-buttons">
+                    <a href="#" class="cancel">Cancel</a>
+                    <button type="submit" class="ok dapp-primary-button">OK</button>
+                </div>
+            </div>
+        </form>
+</template>
